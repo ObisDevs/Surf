@@ -1,0 +1,26 @@
+# OS
+.DS_Store
+
+# Node / JS
+node_modules/
+dist/
+.tmp/
+.coverage/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# Editor
+.vscode/
+.idea/
+
+# Env
+.env
+.env.*
+
+# BMAD (track if needed; default ignore local caches)
+.bmad-cache/
