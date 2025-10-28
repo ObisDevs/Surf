@@ -1,26 +1,45 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Production
+*.zip
+
+# Environment
+.env
+.env.local
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+
 # OS
 .DS_Store
+Thumbs.db
 
-# Node / JS
-node_modules/
-dist/
-.tmp/
-.coverage/
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-logs/
-*.log
-
-# Editor
+# IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# Env
-.env
-.env.*
-
-# BMAD (track if needed; default ignore local caches)
-.bmad-cache/
+# Logs
+logs/
+*.log
+npm-debug.log*

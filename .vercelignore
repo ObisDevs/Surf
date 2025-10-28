@@ -1,0 +1,9 @@
+extension/
+shared/
+supabase/
+*.md
+.git/
+.github/
+node_modules/
+.env.local
+.DS_Store

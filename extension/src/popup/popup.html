@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SurfAI</title>
+  <style>
+    body {
+      width: 320px;
+      padding: 20px;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+    }
+    h1 {
+      font-size: 20px;
+      margin: 0 0 16px 0;
+      color: #1a1a1a;
+    }
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+    .indicator.inactive {
+      background: #ef4444;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 8px;
+      border: none;
+      border-radius: 6px;
+      background: #3b82f6;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    button.secondary {
+      background: #6b7280;
+    }
+    button.secondary:hover {
+      background: #4b5563;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧠 SurfAI</h1>
+  <div class="status">
+    <div class="indicator" id="indicator"></div>
+    <span>Status: <strong id="status">Inactive</strong></span>
+  </div>
+  <button id="toggle">Activate</button>
+  <button id="test" class="secondary">Test DOM Capture</button>
+  <script src="popup.js"></script>
+</body>
+</html>

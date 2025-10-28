@@ -104,9 +104,14 @@ Copy code
 ## 🔐 Security Model
 
 - **API Keys:** Stored securely in Vercel + Supabase secrets.
+- **RLS Enforcement:** MANDATORY on all user-facing tables.
+- **Service Role Protection:** NEVER expose service_role key client-side.
 - **MCP Access:** Protected via signed key (JWT or Bearer).
+- **AI API Proxying:** All AI calls proxied through secure Edge Functions.
+- **Input Validation:** All inputs validated and sanitized server-side.
 - **Sandboxing:** MCP isolates system tasks and enforces limits.
 - **Audit Logging:** Every agent task logged to Supabase `logs`.
+- **Rate Limiting:** Implemented on all AI and sensitive endpoints.
 
 ---
 

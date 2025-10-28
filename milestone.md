@@ -24,8 +24,10 @@
 
 **Tasks:**
 - Create tables: `ai_memory`, `user_profiles`, `logs`.
+- **MANDATORY**: Enable RLS on all tables with proper policies.
 - Add embedding insertion and retrieval functions.
-- Test similarity search.
+- Create HNSW indexes for vector similarity search.
+- Test similarity search with performance validation.
 
 ---
 
@@ -43,10 +45,16 @@
 **Goal:** Create secure Next.js API endpoints.
 
 **Endpoints:**
-- `/api/plan`
-- `/api/vision`
-- `/api/memory`
-- `/api/feedback`
+- `/api/plan` - Secure AI planning with input validation
+- `/api/vision` - Multimodal processing with rate limiting
+- `/api/memory` - Vector operations with RLS enforcement
+- `/api/feedback` - Audit logging with session validation
+
+**Security Requirements:**
+- All endpoints must validate user sessions
+- Implement rate limiting and input sanitization
+- Use service_role key only server-side
+- Add comprehensive error handling
 
 ---
 
@@ -116,10 +124,12 @@
 **Tasks:**
 - Install MCP and run server.
 - Implement `/web/lib/mcpClient.ts` and `/api/mcp`.
-- Enable access to all 19 tools.
-- Integrate into AI reasoning flow.
-- Sync Supabase + MCP memory.
+- **SECURITY**: Secure MCP API key management via Edge Functions.
+- Enable access to all 19 tools with proper authentication.
+- Integrate into AI reasoning flow with input validation.
+- Sync Supabase + MCP memory with RLS compliance.
 - Test tools: `vision_intelligence`, `analytics_brain`, `orchestrator_brain`, etc.
+- Implement comprehensive logging for all MCP operations.
 
 ---
 

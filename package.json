@@ -1,0 +1,28 @@
+{
+  "name": "surfai",
+  "version": "3.0.0",
+  "private": true,
+  "workspaces": [
+    "extension",
+    "web",
+    "shared"
+  ],
+  "scripts": {
+    "dev:web": "cd web && npm run dev",
+    "dev:extension": "cd extension && npm run dev",
+    "build:web": "cd web && npm run build",
+    "build:extension": "cd extension && npm run build",
+    "type-check": "npm run type-check --workspaces",
+    "lint": "npm run lint --workspaces",
+    "test": "npm run test --workspaces",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  }
+}
