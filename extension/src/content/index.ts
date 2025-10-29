@@ -66,4 +66,14 @@ interface SurfAI {
   parseDOM,
 }
 
-console.log('SurfAI content script loaded')
+// Wait for DOM to be ready before exposing API
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('SurfAI content script loaded (after DOM)')
+  })
+} else {
+  console.log('SurfAI content script loaded')
+}
+
+// Dispatch event to notify page
+window.dispatchEvent(new CustomEvent('surfai-loaded'))
