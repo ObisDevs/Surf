@@ -10,17 +10,31 @@ export default function Home(): JSX.Element {
   const [extensionInstalled, setExtensionInstalled] = useState(false)
 
   useEffect(() => {
-    // Check if extension is installed
+    // Check if extension is installed - wait for content script to load
     const checkExtension = () => {
       if (typeof window !== 'undefined' && (window as any).surfai) {
         setExtensionInstalled(true)
         setResult('✅ Extension detected and ready')
-      } else {
-        setResult('⚠️ Extension not detected. Please install the SurfAI extension.')
+        return true
       }
+      return false
     }
-    checkExtension()
-    const interval = setInterval(checkExtension, 2000)
+    
+    // Try immediately
+    if (checkExtension()) return
+    
+    // Then check every 500ms for up to 10 seconds
+    let attempts = 0
+    const interval = setInterval(() => {
+      attempts++
+      if (checkExtension() || attempts > 20) {
+        clearInterval(interval)
+        if (!checkExtension()) {
+          setResult('⚠️ Extension not detected. Please install and refresh the page.')
+        }
+      }
+    }, 500)
+    
     return () => clearInterval(interval)
   }, [])
 
