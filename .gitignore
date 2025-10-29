@@ -23,6 +23,14 @@ dist/
 .env.test.local
 .env.production.local
 
+# Environment in subdirectories (explicit)
+web/.env
+web/.env.local
+web/.env.production
+extension/.env
+extension/.env.local
+extension/.env.production
+
 # Vercel
 .vercel
 
