@@ -1,5 +1,5 @@
-import { createServerSupabaseClient } from '@/lib/supabase/server'
-import type { AIMemory, InsertAIMemory } from '@/lib/db/schema'
+import { createServerSupabaseClient } from '../supabase/server'
+import type { AIMemory, InsertAIMemory } from './schema'
 
 export async function insertMemory(data: InsertAIMemory): Promise<AIMemory> {
   const supabase = await createServerSupabaseClient()

@@ -1,5 +1,5 @@
-import { createServerSupabaseClient } from '@/lib/supabase/server'
-import type { ActivityLog, InsertActivityLog } from '@/lib/db/schema'
+import { createServerSupabaseClient } from '../supabase/server'
+import type { ActivityLog, InsertActivityLog } from './schema'
 
 export async function insertLog(data: InsertActivityLog): Promise<ActivityLog> {
   const supabase = await createServerSupabaseClient()
