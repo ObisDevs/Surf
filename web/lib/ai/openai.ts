@@ -1,8 +1,15 @@
 import OpenAI from 'openai'
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY!,
-})
+let openaiClient: OpenAI | null = null
+
+function getOpenAI(): OpenAI {
+  if (!openaiClient) {
+    openaiClient = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY || '',
+    })
+  }
+  return openaiClient
+}
 
 export interface ChatMessage {
   role: 'system' | 'user' | 'assistant'
@@ -19,6 +26,7 @@ export async function chat(
   messages: ChatMessage[],
   options: ChatOptions = {}
 ): Promise<string> {
+  const openai = getOpenAI()
   const response = await openai.chat.completions.create({
     model: options.model ?? 'gpt-4o',
     messages,
@@ -33,6 +41,7 @@ export async function analyzeImage(
   imageUrl: string,
   prompt: string
 ): Promise<string> {
+  const openai = getOpenAI()
   const response = await openai.chat.completions.create({
     model: 'gpt-4o',
     messages: [

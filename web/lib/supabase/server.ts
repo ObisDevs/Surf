@@ -6,8 +6,8 @@ export async function createServerSupabaseClient(): Promise<ReturnType<typeof cr
   const cookieStore = await cookies()
 
   return createServerClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+    process.env.SUPABASE_SERVICE_ROLE_KEY || '',
     {
       cookies: {
         get(name: string): string | undefined {
