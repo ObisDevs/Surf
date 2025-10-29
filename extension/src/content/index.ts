@@ -111,6 +111,33 @@ export async function recallMemory(
   return recallSimilarTasks(userId, task)
 }
 
+let isRunning = false
+
+async function executeTask(task: string): Promise<void> {
+  if (isRunning) {
+    throw new Error('Agent is already running')
+  }
+  
+  isRunning = true
+  console.log('SurfAI: Starting task:', task)
+  
+  try {
+    await reasonAndAct('web-user', task)
+    console.log('SurfAI: Task completed')
+  } catch (error) {
+    console.error('SurfAI: Task failed:', error)
+    throw error
+  } finally {
+    isRunning = false
+  }
+}
+
+function stop(): void {
+  isRunning = false
+  aiMouse.hide()
+  console.log('SurfAI: Stopped')
+}
+
 interface SurfAI {
   callApi: typeof callApi
   captureDOM: typeof captureDOM
@@ -124,6 +151,9 @@ interface SurfAI {
   hideMouse: () => void
   reasonAndAct: typeof reasonAndAct
   retryWithRecovery: typeof retryWithRecovery
+  executeTask: typeof executeTask
+  stop: typeof stop
+  isRunning: () => boolean
 }
 
 ;(window as Window & { surfai?: SurfAI }).surfai = {
@@ -139,6 +169,9 @@ interface SurfAI {
   hideMouse: () => aiMouse.hide(),
   reasonAndAct,
   retryWithRecovery,
+  executeTask,
+  stop,
+  isRunning: () => isRunning,
 }
 
 console.log('SurfAI content script loaded')
