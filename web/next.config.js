@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    optimizeCss: true,
-    optimizeImages: true,
-  },
+  // Note: experimental optimization options removed to avoid optional
+  // peer dependency requirements during build (e.g., 'critters').
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
